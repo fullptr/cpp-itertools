@@ -1,4 +1,4 @@
-#include "cpp-itertools.h"
+#include "cpp-itertools.hpp"
 
 #include <iostream>
 #include <vector>
