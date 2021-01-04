@@ -9,14 +9,14 @@ A Python builtin for looping backwards through a container. In C++ world, this g
 on any object implementing `cbegin` and `cend`.
 
 Python:
-```
+```python
 numbers = [1, 2, 3, 4, 5]
 for x in reversed(numbers):
     foo(x)
 ```
 
 C++:
-```
+```cpp
 std::vector<int> numbers{1, 2, 3, 4, 5};
 for (auto x : itertools::reversed(numbers)) {
     foo(x);
@@ -28,14 +28,14 @@ Another builtin that loops through a container and provides a second value actin
 Works for any object with forward iterators.
 
 Python:
-```
+```python
 words = ["Person", "Man", "Woman", "Camera", "TV"]
 for i, x in enumerate(words):
     foo(i, x)
 ```
 
 C++:
-```
+```cpp
 std::vector<std::string> words{"Person", "Man", "Woman", "Camera", "TV"};
 for (auto& [i, x] : itertools::enumerate(words)) {
     foo(i, x);
