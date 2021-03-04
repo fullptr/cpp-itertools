@@ -55,6 +55,13 @@ enumerate(const T& iterable, std::size_t start = 0)
     }
 }
 
+inline cppcoro::generator<int> range(int end)
+{
+    for (int i = 0; i != end; ++i) {
+        co_yield i;
+    }
+}
+
 template <typename Left, typename Right>
 cppcoro::generator<std::pair<typename Left::reference, typename Right::reference>>
 zip(Left& left, Right& right)
@@ -171,15 +178,6 @@ filterfalse(Predicate<T> predicate, const T& iterable)
         if (!predicate(elem)) {
             co_yield elem;
         }
-    }
-}
-
-template <typename Func, typename... Args>
-cppcoro::generator<typename std::result_of<Func(Args&&...)>::type>
-starmap(Func&& function, const std::vector<std::tuple<Args...>>& args)
-{
-    for (const auto& signature : args) {
-        co_yield std::apply(function, signature);
     }
 }
 
